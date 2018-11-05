@@ -1,11 +1,15 @@
 package bg.clearcode.javacourse181105.intro;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by Iva Koleva, ClearCode Ltd. on 05.11.2018,
  * a significant bit of leva.bg project.
  */
 public class NameableFactoryImpl {
 
+    // using generics
     public <T extends Nameable> T getInstance(final Class<T> tClass) {
         try {
             final T nameable = tClass.newInstance();
@@ -18,6 +22,7 @@ public class NameableFactoryImpl {
     }
 
 
+    // using raw types
     public Nameable newInstance(final Class nameableClass) {
         assert nameableClass != null;
         //Person person = nameableClass;
@@ -46,9 +51,13 @@ public class NameableFactoryImpl {
     public static void main(String[] args) {
         final NameableFactoryImpl nameableFactory = new NameableFactoryImpl();
         final Nameable nameable = nameableFactory.newInstance();
-        final Nameable nameable1 = nameableFactory.newInstance(MoviesPerson.class);
-        System.out.println();
 
+        final List<Person> personList = new ArrayList<>();
+        personList.add((Person) nameableFactory.newInstance(MoviesPerson.class));
+        //ClassCastException
+        //personList.add((MoviesPerson) nameableFactory.newInstance(Person.class));
+
+        System.out.println();
 
         final Person person = nameableFactory.getInstance(Person.class);
         final MoviesPerson moviesPerson = nameableFactory.getInstance(MoviesPerson.class);
