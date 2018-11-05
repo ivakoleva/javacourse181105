@@ -34,7 +34,6 @@ public class AnotherClass extends MyAbstractClass implements MyInterface {
 
         System.out.println(anotherClass1.equals(anotherClass3)); // true
         System.out.println(anotherClass1.equals(anotherClass2)); // false if default equals & hashcode, true otherwise
-
     }
 
     @Override

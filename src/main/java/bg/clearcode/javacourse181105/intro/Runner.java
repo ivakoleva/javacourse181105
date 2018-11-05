@@ -68,9 +68,30 @@ public class Runner {
 
         boolean myValue = false;*/
 
-        System.out.println("param0: " + args[0] + " param1:" + args[0]);
-        Runner4 runner1 = new Runner4();
+        /*if (!(args.length >= 2)) {
+            System.out.println("Usage: java Runner <param1> <param2>");
+            System.exit(0);
+        }
+        //assert args.length >= 2;
+        System.out.println("param0: " + args[0] + " param1:" + args[1]);
+        Runner4 runner1 = new Runner4();*/
 
+
+        int[] sampleArray = {1, 2, 3};
+        Runner4.printArray(sampleArray);
+
+        int[][] multiArray = new int[5][10];
+        outer:
+        for (int i = 0; i < 5; i++) {
+            inner:
+            for (int k = 0; k < 10; k++) {
+                multiArray[i][k] = k;
+                if (k % 2 == 0) {
+                    continue inner;
+                }
+                multiArray[i][k] += (i + 1) * 100;
+            }
+        }
 
         final SampleNestedClass nestedClass = new SampleNestedClass();
 
