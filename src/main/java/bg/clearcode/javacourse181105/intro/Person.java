@@ -6,14 +6,16 @@ import java.util.Arrays;
  * Created by Iva Koleva, ClearCode Ltd. on 05.11.2018,
  * a significant bit of leva.bg project.
  */
-public  class Person implements Comparable<Person> {
+public class Person implements Comparable<Person>, Nameable {
     private String name;
     private int age;
 
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public void setName(final String name) {
         this.name = name;
     }
