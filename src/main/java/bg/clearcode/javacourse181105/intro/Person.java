@@ -38,6 +38,13 @@ public class Person implements Comparable<Person>, Nameable {
         return name.compareTo(o.getName());
     }
 
+    @Override
+    public String toString() {
+        return "Person{" +
+                "name='" + name + '\'' +
+                ", age=" + age +
+                '}';
+    }
 
     public static void main(String[] args) {
         final Person person = new Person();
@@ -52,5 +59,7 @@ public class Person implements Comparable<Person>, Nameable {
         final Person[] personArray = {person, person2, person1};
         Arrays.sort(personArray);
         System.out.println();
+
+        System.out.println(person);
     }
 }
