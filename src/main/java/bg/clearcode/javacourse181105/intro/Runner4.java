@@ -1,4 +1,4 @@
-package bg.clearcode.javacourse181105;
+package bg.clearcode.javacourse181105.intro;
 
 /**
  * Created by Iva Koleva, ClearCode Ltd. on 05.11.2018,
