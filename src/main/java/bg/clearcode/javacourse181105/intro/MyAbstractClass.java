@@ -10,7 +10,7 @@ public abstract class MyAbstractClass {
 
     abstract void test();
 
-    public void test1() {
+    public final void test1() {
         System.out.println("test1");
     }
 }
