@@ -30,6 +30,7 @@ public class AnotherClass extends MyAbstractClass implements MyInterface {
         AnotherClass anotherClass2 = new AnotherClass(1);
         AnotherClass anotherClass3 = anotherClass1;
 
+
         AnotherClass anotherClass4 = (AnotherClass) anotherClass1.clone();
 
         System.out.println(anotherClass1.equals(anotherClass3)); // true
