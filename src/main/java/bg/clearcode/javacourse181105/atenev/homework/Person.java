@@ -1,8 +1,8 @@
 package bg.clearcode.javacourse181105.atenev.homework;
 
 public class Person implements Entity {
-    int id;
-    int age;
+    private int id;
+    private int age;
 
     @Override
     public void setId(int id) {
