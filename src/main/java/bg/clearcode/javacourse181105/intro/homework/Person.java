@@ -7,7 +7,7 @@ public class Person extends AbstractTax implements Taxable{
 
     @Override
     public int compareTo(Taxable o) {
-        return 0;
+        return this.getAge() - o.getAge();
     }
 
     //    @Override
