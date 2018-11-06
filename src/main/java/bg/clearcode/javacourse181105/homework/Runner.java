@@ -9,7 +9,8 @@ public class Runner {
     public static void main(final String[] args) {
         List<Ageable> ageableList = new ArrayList<>();
         initAgeable(ageableList, Person.class);
-        initAgeable(ageableList, Company.class);
+
+
 
         final Ageable[] ageables = ageableList.toArray(new Ageable[0]);
         Arrays.sort(ageables, new AgeComparator());
