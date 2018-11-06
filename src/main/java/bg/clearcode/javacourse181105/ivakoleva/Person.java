@@ -6,6 +6,7 @@ package bg.clearcode.javacourse181105.ivakoleva;
  */
 public class Person implements Ageable {
     private int age;
+    private Gender gender;
 
     @Override
     public int getAge() {

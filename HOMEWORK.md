@@ -1,3 +1,23 @@
+06.11:
+
+Data structures:
+* one (concurrent) queue
+* state of transfer (count of batches transferred)
+
+Feature:
+* generate a Map of 5 (constant) entries (batch):
+    * Identification code (for key) and
+    * Person or Company (for value) 
+
+Threads:
+* a thread adding to queue batches of persons, then sleeps for a second
+* a thread adding to queue batches of companies, then sleeps for a second
+* a thread getting 2 batches, then printing to standard output using lambda
+* join to main thread
+
+Data quantity:
+* 50 companies and/or person
+
 05.11:
 
 Ceremonies:
