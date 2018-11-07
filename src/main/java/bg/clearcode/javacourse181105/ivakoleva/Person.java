@@ -17,4 +17,8 @@ public class Person implements Ageable {
     public void setAge(int age) {
         this.age = age;
     }
+
+    public Person(int age) {
+        this.age = age;
+    }
 }
