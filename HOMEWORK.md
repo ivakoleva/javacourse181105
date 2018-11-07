@@ -1,3 +1,15 @@
+07.11:
+
+* emulate exception bubbling (on multiple layers)
+    * on each throw, to add exception to suppressed and cause
+    * on main method interception, traverse and print all causes up to initial cause   
+    * print all suppressed as well
+    
+* add dateOfCreation to person/company
+* deprecate age (rewrite, bridge to dateOfCreation and/or mark as deprecated)
+* calculate age in a dynamic fashion when printing Ageables
+
+
 06.11:
 
 Data structures:
