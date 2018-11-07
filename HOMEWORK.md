@@ -9,7 +9,6 @@
 * deprecate age (rewrite, bridge to dateOfCreation and/or mark as deprecated)
 * calculate age in a dynamic fashion when printing Ageables
 
-
 06.11:
 
 Data structures:
