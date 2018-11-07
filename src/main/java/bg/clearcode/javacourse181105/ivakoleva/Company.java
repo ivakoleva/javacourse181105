@@ -16,4 +16,8 @@ public class Company implements Ageable {
     public void setAge(int age) {
         this.age = age;
     }
+
+    public Company(int age) {
+        this.age = age;
+    }
 }
