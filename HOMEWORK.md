@@ -1,3 +1,9 @@
+08.11:
+
+* populate a few person/company instances by CLI using Scanner
+* print to stdout
+* write to a file
+
 07.11:
 
 * emulate exception bubbling (on multiple layers)

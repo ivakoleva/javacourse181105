@@ -5,36 +5,22 @@ package bg.clearcode.javacourse181105.ivakoleva;
  * a significant bit of leva.bg project.
  */
 public class ExceptionInitialCauseRunner {
-    private static final int exceptionDepth = 3;
 
     public static void main(final String[] args) {
-
-
-        /*final Supplier<Exception> exceptionSupplier = () -> {
-            int
-            final Exception exception = new Exception();
-
-
-        };*/
-
-        /*final BiFunction<Integer, Exception, Exception> generateException = (level, exception) -> {
-            final Integer i = level == null ? exceptionDepth : level;
-            if(level > 0) {
-                generateException.apply(i - 1, exception);
-            }
-            return exception;
-        };*/
-
-
         try {
-            throw generateException(new Exception("initial"), null);
+            throw generateExceptionRecursive(3);
         } catch (Exception e) {
             // walk and get init cause
+            // TODO
+            System.out.println(e);
         }
     }
 
-    private static Exception generateException(final Exception exception, final Integer level) {
-
+    private static Exception generateExceptionRecursive(final Integer levels) {
+        final Exception exception = new Exception("exception: " + levels);
+        if (levels > 0) {
+            exception.initCause(generateExceptionRecursive(levels - 1));
+        }
         return exception;
     }
 }
