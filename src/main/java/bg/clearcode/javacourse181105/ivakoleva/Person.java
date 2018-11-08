@@ -12,11 +12,14 @@ public class Person implements Ageable {
     private LocalDate dateOfBirth;
 
     @Override
+    // TODO: reimplement
     public int getAge() {
         return age;
     }
 
     @Override
+    @Deprecated
+    // TODO: reimplement
     public void setAge(int age) {
         this.age = age;
     }
@@ -37,6 +40,7 @@ public class Person implements Ageable {
         this.dateOfBirth = dateOfBirth;
     }
 
+    // TODO: reimplement
     public Person(int age) {
         this.age = age;
     }
