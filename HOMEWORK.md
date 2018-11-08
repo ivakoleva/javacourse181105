@@ -4,6 +4,9 @@
 * print to stdout
 * write to a file
 
+* test WatchServiceRunner
+* test FileVisitorWalkTreeRunner
+
 07.11:
 
 * emulate exception bubbling (on multiple layers)
