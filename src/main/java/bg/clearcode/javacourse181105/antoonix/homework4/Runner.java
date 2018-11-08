@@ -23,12 +23,12 @@ public class Runner {
     };
 
     public static void main(final String[] args) {
-        String choice = "";
+        String choice;
         Scanner scanner = new Scanner(System.in);
-        while (!choice.matches("P|C|c|p")) {
+        do {
             System.out.print("Choose [P]erson/[C]ompany: ");
             choice = scanner.nextLine();
-        }
+        } while (!choice.matches("P|C|c|p"));
 
         final Storable item = choice.equalsIgnoreCase("c")
                 ? companySupplier.get()
