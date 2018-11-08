@@ -12,7 +12,6 @@ public class ThreadsRunner {
     private static final Runnable runnable = () -> {
         try {
             while (!Thread.interrupted()) {
-
                 ConcurrencyRunner.printThreadMessageToOutput.accept("Hi.");
                 synchronized (monitor) {
                     ConcurrencyRunner.printThreadMessageToOutput.accept("Got the monitor.");
