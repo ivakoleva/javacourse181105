@@ -1,10 +1,8 @@
 package bg.clearcode.javacourse181105.hw4;
 
-import bg.clearcode.javacourse181105.hw3.Person;
+import bg.clearcode.javacourse181105.hw4.Person;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -30,6 +28,26 @@ public class ScannerRunner {
         people.forEach((person) -> System.out.println(person.getAge()));
 
         // * write to a file
-        
+        try (final ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream("hw4.txt"))) {
+            objectOutputStream.writeObject(people);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        // Let's try tro retrieve the people list object
+        final List<Person> peopleFromFile;
+        try (final ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream("hw4.txt"))) {
+            try {
+                peopleFromFile = (ArrayList<Person>) objectInputStream.readObject();
+                System.out.println("Read from file:");
+                peopleFromFile.forEach((person -> System.out.println(person.getAge())));
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
