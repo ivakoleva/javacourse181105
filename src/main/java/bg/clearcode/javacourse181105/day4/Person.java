@@ -15,7 +15,7 @@ public class Person implements Serializable {
         return INSTANCE;
     }
 
-    private Person() {
+    public Person() {
     }
 
     public String getName() {
