@@ -5,14 +5,11 @@ package bg.clearcode.javacourse181105.ivakoleva;
  * a significant bit of leva.bg project.
  */
 public class ExceptionInitialCauseRunner {
-
     public static void main(final String[] args) {
         try {
             throw generateExceptionRecursive(3);
         } catch (Exception e) {
-            // walk and get init cause
-            // TODO
-            System.out.println(e);
+            printInitialCause(e);
         }
     }
 
@@ -22,5 +19,13 @@ public class ExceptionInitialCauseRunner {
             exception.initCause(generateExceptionRecursive(levels - 1));
         }
         return exception;
+    }
+
+    private static void printInitialCause(final Throwable throwable) {
+        if (throwable.getCause() == null) {
+            System.out.println(throwable.getMessage());
+            return;
+        }
+        printInitialCause(throwable.getCause());
     }
 }
