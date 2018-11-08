@@ -12,7 +12,7 @@ public class Company implements Ageable {
 
     @Override
     public int getAge() {
-        return (int) ChronoUnit.YEARS.between(dateOfBirth, LocalDate.now());
+        return Ageable.calculateYearsFromNow.apply(dateOfBirth);
     }
 
     @Override
