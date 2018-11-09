@@ -35,7 +35,7 @@ public class ScheduledThreadPoolExecutorRunner {
             e.printStackTrace();
         }
 
-        while(Duration.between(LocalDateTime.now(), dateTimeOfStart).getSeconds() < 10) {
+        while (Duration.between(LocalDateTime.now(), dateTimeOfStart).getSeconds() < 10) {
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
