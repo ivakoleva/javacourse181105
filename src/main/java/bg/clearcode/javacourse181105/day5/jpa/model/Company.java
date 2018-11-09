@@ -1,6 +1,9 @@
 package bg.clearcode.javacourse181105.day5.jpa.model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Lob;
+import javax.persistence.OneToMany;
 import java.util.Collection;
 
 /**
@@ -8,11 +11,7 @@ import java.util.Collection;
  * a significant bit of leva.bg project.
  */
 @Entity
-public class Company {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
+public class Company extends BaseEntity {
     private String name;
 
     @Lob
@@ -20,14 +19,6 @@ public class Company {
 
     @OneToMany(mappedBy = "company", fetch = FetchType.EAGER)
     private Collection<Person> personCollection;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

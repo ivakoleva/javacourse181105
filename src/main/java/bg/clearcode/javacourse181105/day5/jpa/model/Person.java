@@ -12,11 +12,7 @@ import java.util.Set;
 @Table(indexes = {@Index(columnList = "name")})
 // JPQL
 @NamedQueries({@NamedQuery(name = "findAllPersons", query = "select p from Person p  where p.name = :personName")})
-public class Person {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
-
+public class Person extends BaseEntity {
     //@Basic(optional = false)
     @Column(length = 300, nullable = false)
     private String name;
@@ -35,13 +31,8 @@ public class Person {
     @Embedded
     private EmbeddableSampleClass embeddableSampleClass;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @Transient
+    private String nonStorableValue;
 
     public String getName() {
         return name;
@@ -89,5 +80,13 @@ public class Person {
 
     public void setEmbeddableSampleClass(EmbeddableSampleClass embeddableSampleClass) {
         this.embeddableSampleClass = embeddableSampleClass;
+    }
+
+    public String getNonStorableValue() {
+        return nonStorableValue;
+    }
+
+    public void setNonStorableValue(String nonStorableValue) {
+        this.nonStorableValue = nonStorableValue;
     }
 }
