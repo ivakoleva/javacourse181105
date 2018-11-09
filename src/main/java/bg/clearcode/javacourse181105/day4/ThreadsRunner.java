@@ -4,10 +4,12 @@ import bg.clearcode.javacourse181105.day2.ConcurrencyRunner;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.function.Predicate;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -25,7 +27,7 @@ public class ThreadsRunner {
 
         }*/
 
-        final Runnable worker = () -> {
+        /*final Runnable worker = () -> {
             while (true) {
                 personService.refreshPersonList();
                 personService.printPersonList();
@@ -35,10 +37,60 @@ public class ThreadsRunner {
                     e.printStackTrace();
                 }
             }
+        };*/
+
+        final Callable<Boolean> worker = () -> {
+            ConcurrencyRunner.printThreadMessageToOutput.accept("Started...");
+            try {
+                personService.refreshPersonList();
+                personService.printPersonList();
+
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+                ConcurrencyRunner.printThreadMessageToOutput.accept("Ending false...");
+                return false;
+            }
+            ConcurrencyRunner.printThreadMessageToOutput.accept("Ending true...");
+            return true;
         };
 
         final ExecutorService executorService = Executors.newFixedThreadPool(3);
-        IntStream.range(0, 3).forEach(i -> executorService.execute(worker));
+        final List<Future<Boolean>> futureList =
+                IntStream.range(0, 5).boxed().map(i -> executorService.submit(worker)).collect(Collectors.toList());
+
+        final List<Boolean> resultList = new ArrayList<>();
+        final AtomicBoolean workersStartingThreadSuccessful = new AtomicBoolean(true);
+        executorService.execute(() -> futureList.forEach(future -> {
+            try {
+                ConcurrencyRunner.printThreadMessageToOutput.accept("starting worker: " + future.toString());
+                resultList.add(future.get());
+            } catch (InterruptedException | ExecutionException e) {
+                e.printStackTrace();
+                workersStartingThreadSuccessful.set(false);
+            }
+        }));
+
+        while (futureList.stream().anyMatch(
+                //future -> !future.isDone())) {
+                ((Predicate<Future<Boolean>>) Future::isDone).negate())) {
+            try {
+
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+
+        ConcurrencyRunner.printThreadMessageToOutput.accept("All workers started successfully: " + workersStartingThreadSuccessful.get());
+        System.out.println();
+        ConcurrencyRunner.printThreadMessageToOutput.accept("Result");
+        System.out.println(resultList);
+        System.out.println();
+        ConcurrencyRunner.printThreadMessageToOutput.accept("All done! Exiting...");
+
+
+        /*IntStream.range(0, 3).forEach(i -> executorService.execute(worker));
         // TODO: show threads join
         while (true) {
             try {
@@ -46,7 +98,7 @@ public class ThreadsRunner {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-        }
+        }*/
     }
 }
 
