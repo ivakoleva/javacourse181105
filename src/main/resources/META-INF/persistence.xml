@@ -1,0 +1,28 @@
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+             http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+             version="2.0">
+    <persistence-unit name="Javacourse181105PersistenceUnit" transaction-type="RESOURCE_LOCAL">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <!--<jta-data-source>java:/DefaultDS</jta-data-source>
+        <mapping-file>ormap.xml</mapping-file>
+        <jar-file>MyApp.jar</jar-file>
+        <shared-cache-mode>ENABLE_SELECTOVE</shared-cache-mode>
+        <validation-mode>CALLBACK</validation-mode>-->
+        <class>bg.clearcode.javacourse181105.day5.jpa.model.Person</class>
+        <class>bg.clearcode.javacourse181105.day5.jpa.model.Company</class>
+        <properties>
+            <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:mysql://localhost/javacourse181105?serverTimezone=EST"/>
+            <property name="javax.persistence.jdbc.user" value="javacourse181105"/>
+            <property name="javax.persistence.jdbc.password" value="javacourse181105"/>
+
+            <property name="hibernate.dialect" value="org.hibernate.dialect.MySQL55Dialect"/>
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.use_sql_comments" value="true"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
+        </properties>
+    </persistence-unit>
+</persistence>

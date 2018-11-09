@@ -28,5 +28,5 @@ public interface Ageable {
 
     void setDateOfBirth(LocalDate dateOfBirth);
 
-    //void setAge(LocalDate dateOfBirth);
+    //void setDateOfBirth(LocalDate dateOfBirth);
 }

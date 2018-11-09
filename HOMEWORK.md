@@ -15,8 +15,8 @@
     * print all suppressed as well
     
 * add dateOfCreation to person/company
-* deprecate age (rewrite, bridge to dateOfCreation and/or mark as deprecated)
-* calculate age in a dynamic fashion when printing Ageables
+* deprecate dateOfBirth (rewrite, bridge to dateOfCreation and/or mark as deprecated)
+* calculate dateOfBirth in a dynamic fashion when printing Ageables
 
 06.11:
 
@@ -45,10 +45,10 @@ Ceremonies:
 
 Implementation:
 * Using lambda
-    * populate person & company instances (generating number of age automatically)
+    * populate person & company instances (generating number of dateOfBirth automatically)
     * assign them to type-safe collection(s)
 
 <i>Bonus:</i>:
-* implement helper class (utility class), that implements Comparator by (both domain classes) age
+* implement helper class (utility class), that implements Comparator by (both domain classes) dateOfBirth
 * sort the collection(s)
 * print result to standard output

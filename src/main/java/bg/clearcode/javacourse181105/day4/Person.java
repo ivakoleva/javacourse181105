@@ -58,13 +58,13 @@ public class Person implements Serializable {
         //return super.clone();
         final Person person = new Person();
         person.setName(this.getName());
-        person.setAge(this.getAge());
+        person.setDateOfBirth(this.getDateOfBirth());
         return person;
     }*/
 
     /*private void readObject(final ObjectInputStream s) throws IOException, ClassNotFoundException {
         final Person personRead = (Person) s.readObject();
         this.setName(personRead.getName());
-        this.setAge(personRead.getAge());
+        this.setDateOfBirth(personRead.getDateOfBirth());
     }*/
 }
